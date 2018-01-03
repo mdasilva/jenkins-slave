@@ -1,0 +1,13 @@
+FROM mdasilva/jenkins-jnlp-slave:latest
+# FROM jenkins/jnlp-slave:3.14-1
+MAINTAINER michael.dasilva@investorsgroup.com
+
+USER root
+
+# miniconda 2
+RUN curl -L https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -o Miniconda2-latest-Linux-x86_64.sh && sh Miniconda2-latest-Linux-x86_64.sh -b -p /opt/miniconda2 && rm Miniconda2-latest-Linux-x86_64.sh && ln -s /opt/miniconda2/bin/conda /usr/local/bin/conda
+
+# miniconda 3
+RUN curl -L https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh && sh Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 && rm Miniconda3-latest-Linux-x86_64.sh && ln -s /opt/miniconda3/bin/conda /usr/local/bin/conda3
+
+USER jenkins
